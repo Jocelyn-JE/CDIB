@@ -1,0 +1,20 @@
+{
+  "name": "my-discord-bot",
+  "version": "1.0.0",
+  "description": "A bot to control the Minecraft server via Discord",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "node src/deployCommands.js"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "discord.js": "^14.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7"
+  },
+  "engines": {
+    "node": ">=16.6.0"
+  }
+}
