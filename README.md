@@ -1,6 +1,6 @@
-# My Discord Bot
+# FireBuildWorld
 
-This is a Discord bot that integrates with the Crafty Controller API to start and stop a Minecraft server.
+This is a Discord bot that integrates with the Crafty Controller API to manipulate a Minecraft server.
 
 ## Setup
 
@@ -14,13 +14,17 @@ This is a Discord bot that integrates with the Crafty Controller API to start an
      ```bash
      npm install
 
-3. Create a .env file and add your tokens:
+3. Create a .env file and add your tokens and other IDs:
 
     ```bash
-    DISCORD_BOT_TOKEN=your-discord-bot-token
-    CRAFTY_API_TOKEN=your-crafty-api-token
-    CLIENT_ID=your-client-id
-    GUILD_ID=your-guild-id
+    DISCORD_BOT_TOKEN=<your_discord_bot_token>
+    CRAFTY_API_TOKEN=<your_crafty_api_token>
+    CRAFTY_API_URL=<your_crafty_api_url>
+    CRAFTY_SERVER_ID=<your_crafty_server_id>
+    CLIENT_ID=<your_client_id>
+    GUILD_ID=<your_guild_id>
+    ADMIN_ROLE_ID=<your_admin_role_id>
+
 
 4. Deploy slash commands:
 
@@ -32,14 +36,10 @@ This is a Discord bot that integrates with the Crafty Controller API to start an
     ```bash
     npm start
 
-Commands
-
-    /startserver: Starts the Minecraft server.
-    /stopserver: Stops the Minecraft server.
-
 ---
 
-### **6. Final Notes**:
-- **Environment variables** are used to keep sensitive information secure.
-- **Modular command files** are used to easily extend and maintain the bot.
-- **Deploy commands script** allows you to deploy or update slash commands as needed.
+Commands
+
+    /start: Starts the Minecraft server.
+    /stop: Stops the Minecraft server.
+    /restart: Restarts the Minecraft server, requires admin specific role.
