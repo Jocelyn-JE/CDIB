@@ -31,3 +31,15 @@ This is a Discord bot that integrates with the Crafty Controller API to start an
 
     ```bash
     npm start
+
+Commands
+
+    /startserver: Starts the Minecraft server.
+    /stopserver: Stops the Minecraft server.
+
+---
+
+### **6. Final Notes**:
+- **Environment variables** are used to keep sensitive information secure.
+- **Modular command files** are used to easily extend and maintain the bot.
+- **Deploy commands script** allows you to deploy or update slash commands as needed.
