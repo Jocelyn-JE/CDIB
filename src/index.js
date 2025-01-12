@@ -44,7 +44,7 @@ client.on('interactionCreate', async (interaction) => {
     const { commandName } = interaction;
 
     // Check if the user has the required role to use the stopserver command
-    const requiredRole = '1187879262989058058'; // Replace with the role name or ID you want to allow
+    const requiredRole = process.env.ADMIN_ROLE_ID; // Replace with the role name or ID you want to allow
     const hasRole = interaction.member.roles.cache.has(requiredRole); // Check if the member has the role
 
     // Handle 'startserver' command
