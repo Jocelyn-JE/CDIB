@@ -47,3 +47,4 @@ Commands
     /start: Starts the Minecraft server, anyone can run it.
     /stop: Stops the Minecraft server, requires admin specific role.
     /restart: Restarts the Minecraft server, requires admin specific role.
+    /run [command]: Sends a given command to the server's console, requires admin specific role.
