@@ -44,6 +44,6 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
 
 Commands
 
-    /start: Starts the Minecraft server.
-    /stop: Stops the Minecraft server.
+    /start: Starts the Minecraft server, anyone can run it.
+    /stop: Stops the Minecraft server, requires admin specific role.
     /restart: Restarts the Minecraft server, requires admin specific role.
