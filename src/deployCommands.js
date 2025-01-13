@@ -2,7 +2,6 @@ const { REST, Routes } = require('discord.js');
 require('dotenv').config(); // To load environment variables
 
 const clientId = process.env.CLIENT_ID;
-const guildId = process.env.GUILD_ID;
 const botToken = process.env.DISCORD_BOT_TOKEN;
 
 const commands = [
@@ -26,8 +25,8 @@ const rest = new REST({ version: '10' }).setToken(botToken);
     try {
         console.log('Started refreshing application (/) commands.');
 
-        // Deploy commands to a specific guild (testing)
-        await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+        // Deploy commands
+        await rest.put(Routes.applicationCommands(clientId), {
             body: commands,
         });
 
