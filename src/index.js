@@ -37,6 +37,27 @@ async function sendServerAction(action, sucessmsg, errormsg) {
     }
 }
 
+async function sendServerSTDIn(cmd, sucessmsg, errormsg) {
+    try {
+        const response = await axios.post(`${API_URL}/${SERVER_ID}/stdin`, cmd,
+        {
+            headers: {
+                Authorization: `Bearer ${process.env.CRAFTY_API_TOKEN}`,
+            },
+            httpsAgent: agent  // Use the custom agent
+        });
+
+        if (response.data.status === 'ok') {
+            return sucessmsg;
+        } else {
+            return errormsg + JSON.stringify(response.data);
+        }
+    } catch (error) {
+        console.error(error);
+        return `Error performing action '${action}': ${error.message}`;
+    }
+}
+
 // Register slash commands and handle interactions
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isCommand()) return;
@@ -70,6 +91,19 @@ client.on('interactionCreate', async (interaction) => {
         }
 
         const response = await sendServerAction('restart_server', 'Serveur redémarré!', 'Le redémarrage à échoué: ');
+        await interaction.reply(response);
+    }
+
+    // Handle 'run' command
+    if (commandName === 'run') {
+        if (!hasRole) {
+            return await interaction.reply('You do not have permission to run a command.');
+        }
+
+        // Get the 'command' option from the interaction
+        const command = interaction.options.getString('command');
+
+        const response = await sendServerSTDIn(command, 'Commande: **/'+command+'**, envoyée', 'La commande à échoué: ');
         await interaction.reply(response);
     }
 });

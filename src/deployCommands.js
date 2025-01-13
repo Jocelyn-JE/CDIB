@@ -17,6 +17,18 @@ const commands = [
         name: 'restart',
         description: 'Restart the Minecraft server',
     },
+    {
+        name: 'run',
+        description: 'Execute a command on the Minecraft server',
+        options: [
+            {
+                type: 3,
+                name: 'command',
+                description: 'Command must be written without /',
+                required: true
+            },
+        ]
+    },
 ];
 
 const rest = new REST({ version: '10' }).setToken(botToken);
@@ -29,6 +41,9 @@ const rest = new REST({ version: '10' }).setToken(botToken);
         await rest.put(Routes.applicationCommands(clientId), {
             body: commands,
         });
+        // await rest.put(Routes.applicationGuildCommands(clientId, '1179555879184506960'), {
+        //     body: commands,
+        // });
 
         console.log('Successfully reloaded application (/) commands.');
     } catch (error) {
