@@ -1,7 +1,7 @@
 {
-  "name": "my-discord-bot",
+  "name": "crafty-discord-integration-bot",
   "version": "1.0.0",
-  "description": "A bot to control the Minecraft server via Discord",
+  "description": "A bot to control a Minecraft server present in Crafty via Discord commands",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
