@@ -24,7 +24,6 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
     CRAFTY_API_URL=<your_crafty_api_url>
     CRAFTY_SERVER_ID=<your_crafty_server_uuid>
     CLIENT_ID=<your_OAuth2_client_id>
-    GUILD_ID=<your_discord_server_id>
     ADMIN_ROLE_ID=<your_admin_role_id>
     ```
 
