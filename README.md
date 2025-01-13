@@ -1,4 +1,4 @@
-# FireBuildWorld
+# Crafty-Discord-Integration-Bot (CDIB)
 
 This is a Discord bot that integrates with the Crafty Controller API to manipulate a Minecraft server.
 
