@@ -23,6 +23,10 @@ const commands = [
             },
         ]
     },
+    {
+        name: 'stats',
+        description: 'Get the statistics of the server',
+    },
 ];
 const clientId = process.env.CLIENT_ID;
 const botToken = process.env.DISCORD_BOT_TOKEN;

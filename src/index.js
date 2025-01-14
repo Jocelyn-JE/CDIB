@@ -54,7 +54,35 @@ async function sendServerSTDIn(cmd, sucessmsg, errormsg) {
         }
     } catch (error) {
         console.error(error);
-        return `Error performing action '${action}': ${error.message}`;
+        return `Error performing command '${cmd}': ${error.message}`;
+    }
+}
+
+async function getServerStats(errormsg) {
+    try {
+        const response = await axios.get(`${API_URL}/${SERVER_ID}/stats`,
+        {
+            headers: {
+                Authorization: `Bearer ${process.env.CRAFTY_API_TOKEN}`,
+            },
+            httpsAgent: agent  // Use the custom agent
+        });
+
+        if (response.data.status === 'ok') {
+            msg = "Server status: "
+            if (response.data.data.running == true) {
+                msg += 'ON :green_circle:\n'
+            } else {
+                msg += 'OFF :red_circle:\n'
+            }
+            msg += 'Players online: **' + response.data.data.online + '/' + response.data.data.max + '**'
+            return msg;
+        } else {
+            return errormsg + JSON.stringify(response.data);
+        }
+    } catch (error) {
+        console.error(error);
+        return `Error getting stats: ${error.message}`;
     }
 }
 
@@ -71,6 +99,12 @@ client.on('interactionCreate', async (interaction) => {
     // Handle 'startserver' command
     if (commandName === 'start') {
         const response = await sendServerAction('start_server', 'Serveur démarré!', 'Le démarrage à échoué: ');
+        await interaction.reply(response);
+    }
+
+    // Handle 'stats' command
+    if (commandName === 'stats') {
+        const response = await getServerStats('La récupération des statistiques à échoué: ');
         await interaction.reply(response);
     }
 
