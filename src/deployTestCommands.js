@@ -11,6 +11,7 @@ const rest = new REST({ version: '10' }).setToken(botToken);
         for (const command of commands) {
             try {
                 // Deploy each command to the test guild
+                command.name += '_test'
                 await rest.post(Routes.applicationGuildCommands(clientId, guildId), { body: command });
                 console.log(`Successfully deployed command: ${command.name}`);
             } catch (error) {
