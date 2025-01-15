@@ -19,9 +19,9 @@ const commands = [
                 type: 3,
                 name: 'command',
                 description: 'Command must be written without /',
-                required: true
+                required: true,
             },
-        ]
+        ],
     },
     {
         name: 'stats',
@@ -32,4 +32,5 @@ const clientId = process.env.CLIENT_ID;
 const botToken = process.env.DISCORD_BOT_TOKEN;
 const guildId = process.env.GUILD_ID;
 
-module.exports = { commands, clientId, botToken, guildId }; // Export commands
+// Export commands
+module.exports = { commands, clientId, botToken, guildId };

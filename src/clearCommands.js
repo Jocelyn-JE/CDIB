@@ -1,6 +1,6 @@
 const { REST, Routes } = require('discord.js');
-require('dotenv').config(); // To load environment variables
-const { clientId, botToken, guildId } = require('./commands.js'); // Import commands
+require('dotenv').config();
+const { clientId, botToken, guildId } = require('./commands.js');
 
 const rest = new REST({ version: '10' }).setToken(botToken);
 
@@ -23,7 +23,8 @@ const rest = new REST({ version: '10' }).setToken(botToken);
         }
 
         console.log('Successfully cleared all commands for the guild.');
-    } catch (error) {
+    }
+    catch (error) {
         console.error('Error clearing commands:', error);
     }
 })();
