@@ -59,7 +59,7 @@ client.on('interactionCreate', async (interaction) => {
         if (!hasRole) {
             return await interaction.reply('You do not have permission to restart the server.');
         };
-        const response = await sendServerAction('restart_server', 'Serveur redémarré!', 'Le redémarrage à échoué: ');
+        const response = await api.sendServerAction('restart_server', 'Serveur redémarré!', 'Le redémarrage à échoué: ');
         await interaction.reply(response);
     }
 
