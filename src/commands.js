@@ -33,4 +33,4 @@ const botToken = process.env.DISCORD_BOT_TOKEN;
 const guildId = process.env.GUILD_ID;
 
 // Export commands
-module.exports = { commands, clientId, botToken, guildId };
+export default { commands, clientId, botToken, guildId };
