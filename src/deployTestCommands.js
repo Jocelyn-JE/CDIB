@@ -18,6 +18,7 @@ const rest = new REST({ version: '10' }).setToken(botToken);
                 }
                 // Deploy the command to the test guild
                 command.name += '_test';
+                command.description += ' | This command is local to this server for testing purposes';
                 await rest.post(Routes.applicationGuildCommands(clientId, guildId), { body: command });
                 console.log(`Successfully deployed command: ${command.name}`);
             }
