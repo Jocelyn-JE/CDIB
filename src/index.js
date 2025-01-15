@@ -1,6 +1,6 @@
-const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
+import { Client, GatewayIntentBits, ActivityType } from 'discord.js';
 import * as api from './apiCalls.js';
-require('dotenv').config();
+import 'dotenv/config';
 
 // Initialize bot client
 const client = new Client({
@@ -28,7 +28,7 @@ client.on('interactionCreate', async (interaction) => {
     // Handle 'stats' command
     if (commandName === 'stats' || commandName === 'stats_test') {
         const response = await api.getServerStats('La récupération des statistiques à échoué @<328210913645559809>');
-        msg = 'Server status: ';
+        let msg = 'Server status: ';
         if (response.data.data.running === true) {
             msg += 'ON :green_circle:\n';
             const date = new Date(response.data.data.started);

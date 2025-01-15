@@ -1,7 +1,7 @@
-const axios = require('axios');
-const https = require('https');
-const fs = require('fs');
-require('dotenv').config();
+import axios from 'axios';
+import https from 'https';
+import fs from 'fs';
+import 'dotenv/config';
 
 // Disable SSL verification
 const agent = new https.Agent({
