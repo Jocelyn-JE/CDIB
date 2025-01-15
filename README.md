@@ -54,7 +54,7 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
 4. Cleanup the test commands:
 
     ```bash
-    npm run clean
+    npm run clear
     ```
 
 ## Deploying
