@@ -7,7 +7,7 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/my-discord-bot.git
+    git clone https://github.com/Jocelyn-JE/CDIB.git
     ```
 
 2. Install dependencies:
@@ -18,33 +18,72 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
 
 3. Create a .env file and add your tokens and other IDs:
 
+    - Discord Bot Configuration:
+
     ```.env
-    DISCORD_BOT_TOKEN=<your_discord_bot_token>
-    CRAFTY_API_TOKEN=<your_crafty_api_token>
-    CRAFTY_API_URL=<your_crafty_api_url>
-    CRAFTY_SERVER_ID=<your_crafty_server_uuid>
-    CLIENT_ID=<your_OAuth2_client_id>
-    ADMIN_ROLE_ID=<your_admin_role_id>
+    DISCORD_BOT_TOKEN=<your_discord_bot_token_here>
+    CLIENT_ID=<your_discord_client_id_here>
+    ADMIN_ROLE_ID=<your_admin_role_id_here>
+    GUILD_ID=<your_testing_server_id_here>
     ```
 
+    - Crafty API Configuration:
 
-4. Deploy slash commands:
+    ```.env
+    CRAFTY_API_TOKEN=<your_crafty_api_token_here>
+    CRAFTY_API_URL=<your_crafty_api_url_here>
+    CRAFTY_SERVER_ID=<your_crafty_server_uuid_here>
+    ```
+
+## Testing
+
+1. Deploy slash commands to the testing server (`GUILD_ID` in `.env`):
 
     ```bash
-    npm run deploy
+    npm test
     ```
 
-5. Start the bot:
+2. Start the bot:
 
     ```bash
     npm start
     ```
 
----
+3. Test your command in the testing server
 
-Commands
+4. Cleanup the test commands:
 
-    /start: Starts the Minecraft server, anyone can run it.
-    /stop: Stops the Minecraft server, requires admin specific role.
-    /restart: Restarts the Minecraft server, requires admin specific role.
-    /run [command]: Sends a given command to the server's console, requires admin specific role.
+    ```bash
+    npm run clean
+    ```
+
+## Deploying
+
+1. Deploy slash commands:
+
+    ```bash
+    npm run deploy
+    ```
+
+2. Start the bot:
+
+    ```bash
+    npm start
+    ```
+
+- Automating script example:
+
+    ```bash
+    cd ./CDIB
+    git pull
+    npm install
+    npm run deploy
+    npm start
+    ```
+
+## Commands
+
+- `/start` Starts the Minecraft server, anyone can run it.
+- `/stop` Stops the Minecraft server, requires admin specific role.
+- `/restart` Restarts the Minecraft server, requires admin specific role.
+- `/run [command]` Sends a given command to the server's console, requires admin specific role.
