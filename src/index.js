@@ -27,22 +27,32 @@ client.on('interactionCreate', async (interaction) => {
 
     // Handle 'stats' command
     if (commandName === 'stats' || commandName === 'stats_test') {
-        const response = await api.getServerStats('La récupération des statistiques à échoué @<328210913645559809>');
-        let msg = 'Server status: ';
-        if (response.data.data.running === true) {
-            msg += 'ON :green_circle:\n';
+        const sentMsg = await interaction.reply("Fetching stats...");
+        let counter = 0;
+        const interval = setInterval(async () => {
+            if (counter >= 350) {
+                clearInterval(interval);
+                return;
+            }
+            const response = await api.getServerStats('La récupération des statistiques à échoué @<328210913645559809>');
             const date = new Date(response.data.data.started);
             const epochTimestamp = Math.floor(date.getTime() / 1000) + 3600;
-            msg += `Started <t:${epochTimestamp}:R>\n`;
-            msg += 'Players online: **' + response.data.data.online + '/' + response.data.data.max + '**';
-            client.user.setActivity('mc.firebuildworld.ovh', {
-                type: ActivityType.Playing,
-            });
-        }
-        else {
-            msg += 'OFF :red_circle:\n';
-        }
-        await interaction.reply(msg);
+            let msg;
+            if (response.data.data.running === true && response.data.data.max === 0) {
+                msg = `Server status: Starting :yellow_circle:\nStarted <t:${epochTimestamp}:R>\n`;
+            }
+            else if (response.data.data.running === true) {
+                msg = `Server status: ON :green_circle:\nStarted <t:${epochTimestamp}:R>\nPlayers online: **${response.data.data.online}/${response.data.data.max}**\nCPU: **${response.data.data.cpu}%** RAM: **${response.data.data.mem}**\n`;
+                client.user.setActivity('mc.firebuildworld.ovh', {
+                    type: ActivityType.Playing,
+                });
+            }
+            else {
+                msg = 'Server status: OFF :red_circle:\n';
+            }
+            sentMsg.edit(msg);
+            counter++;
+        }, 1000);
     }
 
     // Handle 'stopserver' command

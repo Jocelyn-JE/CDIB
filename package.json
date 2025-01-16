@@ -1,6 +1,6 @@
 {
   "name": "crafty-discord-integration-bot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A bot to control a Minecraft server present in Crafty via Discord commands",
   "main": "src/index.js",
   "scripts": {
