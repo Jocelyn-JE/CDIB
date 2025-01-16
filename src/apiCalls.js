@@ -55,7 +55,6 @@ export async function getServerStats(errormsg) {
                 console.error('Error writing to file:', err);
                 return;
             }
-            console.log('Data successfully saved to file:', './api_response.json');
         });
 
         if (response.data.status === 'ok') {
