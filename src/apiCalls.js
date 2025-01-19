@@ -9,7 +9,7 @@ const agent = new https.Agent({
 });
 const auth_header = { headers: { Authorization: `Bearer ${process.env.CRAFTY_API_TOKEN}` }, httpsAgent: agent };
 
-const API_URL = 'https://' + process.env.CRAFTY_API_URL + '/api/v2/servers';
+const API_URL = process.env.CRAFTY_API_URL + '/api/v2/servers';
 const SERVER_ID = process.env.CRAFTY_SERVER_ID;
 
 export async function sendServerAction(action, sucessmsg, errormsg) {
