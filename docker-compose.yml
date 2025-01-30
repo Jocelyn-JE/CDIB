@@ -1,0 +1,6 @@
+services:
+  app:
+    image: greenmelon5543/cdib
+    env_file:
+      - ./.env
+    restart: on-failure
