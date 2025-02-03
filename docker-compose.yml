@@ -3,4 +3,7 @@ services:
     image: greenmelon5543/cdib
     env_file:
       - ./.env
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
     restart: on-failure
