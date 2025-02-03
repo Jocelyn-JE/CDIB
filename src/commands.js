@@ -31,6 +31,9 @@ const commands = [
 const clientId = process.env.CLIENT_ID;
 const botToken = process.env.DISCORD_BOT_TOKEN;
 const guildId = process.env.GUILD_ID;
+const statsRefreshRate =
+    process.env.STATS_REFRESH_RATE ==
+        undefined ? 30 : process.env.STATS_REFRESH_RATE;
 
 // Export commands
-export { commands, clientId, botToken, guildId };
+export { commands, clientId, botToken, guildId, statsRefreshRate };

@@ -26,6 +26,12 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
     ADMIN_ROLE_ID=<your_admin_role_id_here>
     ```
 
+    Optional:
+
+    ```.env
+    STATS_REFRESH_RATE=<in_seconds_default_is_15>
+    ```
+
     - For developpement purposes:
 
     ```.env

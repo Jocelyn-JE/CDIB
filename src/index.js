@@ -1,6 +1,7 @@
 import { Client, GatewayIntentBits, ActivityType } from 'discord.js';
 import * as api from './apiCalls.js';
 import 'dotenv/config';
+import { statsRefreshRate } from './commands.js';
 
 // Initialize bot client
 const client = new Client({
@@ -30,7 +31,7 @@ client.on('interactionCreate', async (interaction) => {
         const sentMsg = await interaction.reply("Fetching stats...");
         let counter = 0;
         const interval = setInterval(async () => {
-            if (counter >= 350) {
+            if (counter >= 240) {
                 clearInterval(interval);
                 return;
             }
@@ -52,7 +53,7 @@ client.on('interactionCreate', async (interaction) => {
             }
             sentMsg.edit(msg);
             counter++;
-        }, 1000);
+        }, statsRefreshRate * 1000);
     }
 
     // Handle 'stopserver' command
