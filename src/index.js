@@ -35,23 +35,28 @@ client.on('interactionCreate', async (interaction) => {
                 clearInterval(interval);
                 return;
             }
-            const response = await api.getServerStats('La récupération des statistiques à échoué @<328210913645559809>');
-            const date = new Date(response.data.data.started);
-            const epochTimestamp = Math.floor(date.getTime() / 1000) + 3600;
-            let msg;
-            if (response.data.data.running === true && response.data.data.max === 0) {
-                msg = `Server status: Starting :yellow_circle:\nStarted <t:${epochTimestamp}:R>\n`;
+            try {
+                const response = await api.getServerStats('La récupération des statistiques à échoué @<328210913645559809>');
+                const date = new Date(response.data.data.started);
+                const epochTimestamp = Math.floor(date.getTime() / 1000) + 3600;
+                let msg;
+                if (response.data.data.running === true && response.data.data.max === 0) {
+                    msg = `Server status: Starting :yellow_circle:\nStarted <t:${epochTimestamp}:R>\n`;
+                }
+                else if (response.data.data.running === true) {
+                    msg = `Server status: ON :green_circle:\nStarted <t:${epochTimestamp}:R>\nPlayers online: **${response.data.data.online}/${response.data.data.max}**\nCPU: **${response.data.data.cpu}%** RAM: **${response.data.data.mem}**\n`;
+                    client.user.setActivity('mc.firebuildworld.ovh', {
+                        type: ActivityType.Playing,
+                    });
+                }
+                else {
+                    msg = 'Server status: OFF :red_circle:\n';
+                }
+                await sentMsg.edit(msg);
+            } catch (error) {
+                console.error('Failed to update stats message:', error);
+                clearInterval(interval);
             }
-            else if (response.data.data.running === true) {
-                msg = `Server status: ON :green_circle:\nStarted <t:${epochTimestamp}:R>\nPlayers online: **${response.data.data.online}/${response.data.data.max}**\nCPU: **${response.data.data.cpu}%** RAM: **${response.data.data.mem}**\n`;
-                client.user.setActivity('mc.firebuildworld.ovh', {
-                    type: ActivityType.Playing,
-                });
-            }
-            else {
-                msg = 'Server status: OFF :red_circle:\n';
-            }
-            sentMsg.edit(msg);
             counter++;
         }, statsRefreshRate * 1000);
     }
