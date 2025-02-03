@@ -1,3 +1,8 @@
 node_modules
 README.md
 .env
+.git
+.gitignore
+docker-compose.yml
+.dockerignore
+api_response.json
