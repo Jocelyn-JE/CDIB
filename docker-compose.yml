@@ -1,6 +1,6 @@
 services:
   app:
-    image: greenmelon5543/cdib
+    image: greenmelon5543/cdib:latest
     env_file:
       - ./.env
     volumes:
