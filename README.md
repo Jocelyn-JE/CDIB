@@ -22,8 +22,13 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
 
     ```.env
     DISCORD_BOT_TOKEN=<your_discord_bot_token_here>
-    CLIENT_ID=<your_discord_client_id_here>
+    CLIENT_ID=<your_discord_Oauth2_client_id_here>
     ADMIN_ROLE_ID=<your_admin_role_id_here>
+    ```
+
+    - For developpement purposes:
+
+    ```.env
     GUILD_ID=<your_testing_server_id_here>
     ```
 
@@ -71,14 +76,12 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
     npm start
     ```
 
-- Automating script example:
+- Or use Docker:
 
     ```bash
     cd ./CDIB
     git pull
-    npm install
-    npm run deploy
-    npm start
+    docker compose up
     ```
 
 ## Commands
@@ -87,3 +90,4 @@ This is a Discord bot that integrates with the Crafty Controller API to manipula
 - `/stop` Stops the Minecraft server, requires admin specific role.
 - `/restart` Restarts the Minecraft server, requires admin specific role.
 - `/run [command]` Sends a given command to the server's console, requires admin specific role.
+- `/stats` Fetches stats like server status, server uptime, player count as well as CPU and RAM usage. This information is updated
