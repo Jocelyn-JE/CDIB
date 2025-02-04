@@ -36,5 +36,4 @@ const statsRefreshRate =
     ? 30
     : process.env.STATS_REFRESH_RATE;
 
-// Export commands
 export { commands, clientId, botToken, guildId, statsRefreshRate };

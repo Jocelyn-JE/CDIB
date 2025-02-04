@@ -7,8 +7,7 @@ const rest = new REST({ version: "10" }).setToken(botToken);
 (async () => {
   try {
     console.log(
-      "\
-Started deploying guild-specific application (/) commands one by one.",
+      "Started deploying guild-specific application (/) commands one by one.",
     );
     const existingCommands = await rest.get(
       Routes.applicationCommands(clientId),
@@ -16,7 +15,6 @@ Started deploying guild-specific application (/) commands one by one.",
     const existingCommandNames = existingCommands.map(
       (command) => command.name,
     );
-
     for (const command of commands) {
       try {
         if (existingCommandNames.includes(command.name)) {
@@ -25,8 +23,7 @@ Started deploying guild-specific application (/) commands one by one.",
         }
         command.name += "_test";
         command.description +=
-          "\
- | This command is local to this server for testing purposes";
+          " | This command is local to this server for testing purposes";
         await rest.post(Routes.applicationGuildCommands(clientId, guildId), {
           body: command,
         });

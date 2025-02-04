@@ -9,7 +9,6 @@ const rest = new REST({ version: "10" }).setToken(botToken);
     console.log("Started deploying application (/) commands one by one.");
     for (const command of commands) {
       try {
-        // Deploy each command
         await rest.post(Routes.applicationCommands(clientId), {
           body: command,
         });

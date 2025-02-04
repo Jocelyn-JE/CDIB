@@ -22,7 +22,6 @@ export async function sendServerAction(action, sucessmsg, errormsg) {
       {},
       auth_header,
     );
-
     if (response.data.status === "ok") {
       return sucessmsg;
     } else {
@@ -41,7 +40,6 @@ export async function sendServerSTDIn(cmd, sucessmsg, errormsg) {
       cmd,
       auth_header,
     );
-
     if (response.data.status === "ok") {
       return sucessmsg;
     } else {
@@ -59,7 +57,6 @@ export async function getServerStats(errormsg) {
       `${API_URL}/${SERVER_ID}/stats`,
       auth_header,
     );
-
     fs.writeFile(
       "./api_response.json",
       JSON.stringify(response.data, null, 2),
